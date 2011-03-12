@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <appSettings>
+    <add key="urlWs" value="http://192.168.56.1:8080/EcurieLoup/ws"/>
+
+    <add key="siteUrl" value="http://192.168.56.1:8080/"/>
+
+    <add key="forumUrl" value="http://192.168.56.1:8080/EcurieLoup/forum/affichage.do"/>
+    <add key="photosUrl" value="http://192.168.56.1:8080/EcurieLoup/albumPhoto/affichage.do"/>
+  </appSettings>
+</configuration>

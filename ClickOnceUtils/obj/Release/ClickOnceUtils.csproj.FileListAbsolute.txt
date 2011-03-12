@@ -1,0 +1,5 @@
+C:\Users\krack\Documents\Visual Studio 2010\Projects\EcuriesDuLoupWin\ClickOnceUtils\bin\Release\ClickOnceUtils.dll
+C:\Users\krack\Documents\Visual Studio 2010\Projects\EcuriesDuLoupWin\ClickOnceUtils\bin\Release\ClickOnceUtils.pdb
+C:\Users\krack\Documents\Visual Studio 2010\Projects\EcuriesDuLoupWin\ClickOnceUtils\obj\Release\ResolveAssemblyReference.cache
+C:\Users\krack\Documents\Visual Studio 2010\Projects\EcuriesDuLoupWin\ClickOnceUtils\obj\Release\ClickOnceUtils.dll
+C:\Users\krack\Documents\Visual Studio 2010\Projects\EcuriesDuLoupWin\ClickOnceUtils\obj\Release\ClickOnceUtils.pdb
