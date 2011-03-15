@@ -85,19 +85,22 @@ namespace Maf.Windows.Forms
 
         private void InitCloseButtonImages() {
             closeButton = new Bitmap(16, 16);
-            Pen pen = new Pen(SystemColors.ControlDark, 2);
-            using (Graphics g = Graphics.FromImage(closeButton)) {
-                g.DrawLine(pen, new Point(3, 3), new Point(12, 12));
-                g.DrawLine(pen, new Point(3, 12), new Point(12, 3));
-            }
+            using (Pen pen = new Pen(SystemColors.ControlDark, 2))
+            {
+                using (Graphics g = Graphics.FromImage(closeButton))
+                {
+                    g.DrawLine(pen, new Point(3, 3), new Point(12, 12));
+                    g.DrawLine(pen, new Point(3, 12), new Point(12, 3));
+                }
 
-            pen.Width = 1;
-            hoverCloseButton = new Bitmap(closeButton);
-            using (Graphics g = Graphics.FromImage(hoverCloseButton)) {
-                g.DrawRectangle(pen, new Rectangle(0, 0, 15, 15));
+                pen.Width = 1;
+                hoverCloseButton = new Bitmap(closeButton);
+                using (Graphics g = Graphics.FromImage(hoverCloseButton))
+                {
+                    g.DrawRectangle(pen, new Rectangle(0, 0, 15, 15));
+                }
+
             }
-            
-            pen.Dispose();
         }
 
         protected override CreateParams CreateParams

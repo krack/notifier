@@ -15,7 +15,7 @@ namespace RegistryManager
                 Console.WriteLine("======");
                 foreach (String arg in args)
                 {
-                    Console.WriteLine(arg);
+                    Console.WriteLine("-"+arg+"-");
                 }
                 Console.WriteLine("======");
                 String action = args[0];
@@ -24,6 +24,7 @@ namespace RegistryManager
                 {
                     String key = args[2];
                     String value = args[3];
+                    
                     Program.Add(directory, key, value);
                 }
                 else if (action.Equals("-remove"))
@@ -39,6 +40,7 @@ namespace RegistryManager
             {
                 Console.WriteLine(e.Message);
             }
+            Console.Read();
         }
         private static void Add(String directory, String key, String value)
         {

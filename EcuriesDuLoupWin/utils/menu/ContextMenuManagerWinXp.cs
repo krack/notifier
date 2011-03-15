@@ -20,6 +20,7 @@ namespace EcuriesDuLoupWin.utils.menu
             this.contextsMenu = new List<ContextMenu>();
             this.CreateFolderMenu();
             this.CreateImageMenu();
+            this.CreateVideoMenu();
          //   this.AddEcurieDuLoupInContextualsMenu();
            
         }
@@ -46,6 +47,17 @@ namespace EcuriesDuLoupWin.utils.menu
             {
                 String command = String.Format("{0} -append -f \"%1\" ", ApplicationPath.GetApplicationPath());
                 ImageContextMenu sendDirectory = new ImageContextMenu("1-Ajouter dans album", command);
+                sendDirectory.Icon = Icons.GetAddIcon();
+                this.contextsMenu.Add(sendDirectory);
+            }
+        }
+
+        private void CreateVideoMenu()
+        {
+
+            {
+                String command = String.Format("{0} -append -f \"%1\" ", ApplicationPath.GetApplicationPath());
+                VideoContextMenu sendDirectory = new VideoContextMenu("1-Ajouter dans album", command);
                 sendDirectory.Icon = Icons.GetAddIcon();
                 this.contextsMenu.Add(sendDirectory);
             }

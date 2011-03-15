@@ -33,38 +33,40 @@ namespace EcuriesDuLoupWin.checker
        
         public bool HasNews()
         {
-            WebClient client = new WebClient();
-            this.inProgress = true;
-            this.fail = false;
-            client.Encoding = Encoding.UTF8;
-            ICredentials identifiant = new NetworkCredential(this.Authentification.Pseudo, this.Authentification.Password);
-          
-            client.Credentials = identifiant;
-            client.DownloadStringCompleted += new DownloadStringCompletedEventHandler(client_DownloadStringCompleted);
-              
-            client.DownloadStringAsync(new Uri(this.StatusUrl), UriKind.Absolute);
-            
-            while (this.inProgress)
+            using (WebClient client = new WebClient())
             {
-                Thread.Sleep(100);
-            }
-            if (this.fail)
-            {
-                return false;
-            }
+                this.inProgress = true;
+                this.fail = false;
+                client.Encoding = Encoding.UTF8;
+                ICredentials identifiant = new NetworkCredential(this.Authentification.Pseudo, this.Authentification.Password);
 
-            bool isNewAction = this.lastTimelastAction < this.status.TimeLastAction;
-            this.lastTimelastAction = this.status.TimeLastAction;
-            bool hasNew = this.status.HasNew && isNewAction;
-            if (this.status.HasNew)
-            {
-                this.iconStatusManager.DefineMessageStatus(this.notifierType);
+                client.Credentials = identifiant;
+                client.DownloadStringCompleted += new DownloadStringCompletedEventHandler(client_DownloadStringCompleted);
+
+                client.DownloadStringAsync(new Uri(this.StatusUrl), UriKind.Absolute);
+
+                while (this.inProgress)
+                {
+                    Thread.Sleep(100);
+                }
+                if (this.fail)
+                {
+                    return false;
+                }
+
+                bool isNewAction = this.lastTimelastAction < this.status.TimeLastAction;
+                this.lastTimelastAction = this.status.TimeLastAction;
+                bool hasNew = this.status.HasNew && isNewAction;
+                if (this.status.HasNew)
+                {
+                    this.iconStatusManager.DefineMessageStatus(this.notifierType);
+                }
+                else
+                {
+                    this.iconStatusManager.DefineNormalStatus(this.notifierType);
+                }
+                return hasNew;
             }
-            else
-            {
-                this.iconStatusManager.DefineNormalStatus(this.notifierType);
-            }
-            return hasNew;
             
         }
 

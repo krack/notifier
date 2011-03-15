@@ -122,10 +122,10 @@ namespace EcuriesDuLoupWin
 
         private void CreateIcon(String name, Icon icon)
         {
-            Stream iconStream = new FileStream(name, FileMode.Create);
-            icon.Save(iconStream);
-            iconStream.Close();
-            iconStream.Dispose();
+            using (Stream iconStream = new FileStream(name, FileMode.Create))
+            {
+                icon.Save(iconStream);
+            }
             icon.Dispose();
         }
 

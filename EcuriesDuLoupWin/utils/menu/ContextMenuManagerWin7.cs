@@ -80,7 +80,7 @@ namespace EcuriesDuLoupWin.utils.menu
 
         private String getPathOfApplication()
         {
-            return Environment.CommandLine.Replace(".vshost", "");
+            return Environment.CommandLine.Replace(".vshost", "").Replace("\"", "");
         }
 
         public void AddEcurieDuLoupInContextualsMenu()

@@ -46,7 +46,16 @@ namespace EcuriesDuLoupWin.ws
         public String HttpUploadFile(string url, string file, string paramName, string contentType, NameValueCollection nvc)
         {
 
+            using (MyWebClient myWebClient = new MyWebClient())
+            {
+                ICredentials identifiant = new NetworkCredential(this.Authentification.Pseudo, this.Authentification.Password);
+                myWebClient.Credentials = identifiant;
+                byte[] responseArray = myWebClient.UploadFile(url, "POST", file);
 
+                return Encoding.ASCII.GetString(responseArray);
+            }
+
+            /*
             string boundary = "---------------------------" + DateTime.Now.Ticks.ToString("x");
             byte[] boundarybytes = System.Text.Encoding.ASCII.GetBytes("\r\n--" + boundary + "\r\n");
 
@@ -110,7 +119,7 @@ namespace EcuriesDuLoupWin.ws
             {
                 wr = null;
             }
-            return response;
+            return response;*/
         }
     }
 }

@@ -2,8 +2,8 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectView>ShowAllFiles</ProjectView>
-    <PublishUrlHistory>ftp://192.168.0.13/krack/software/apache-tomcat-7.0.4/webapps/notifier/|ftp://192.168.0.13/krack/software/apache-tomcat-7.0.4/webapps/|C:\Users\Public\|ftp://ecuriesduloup.fr/tomcat/webapps/notifier/|ftp://ecuriesduloup.fr/tomcat/webapps/beta_notifier/</PublishUrlHistory>
-    <InstallUrlHistory>http://192.168.0.13/notifier/|\\localhost\Public\|http://www.ecuriesduloup.fr/notifier/|http://www.ecuriesduloup.fr/beta_notifier/</InstallUrlHistory>
+    <PublishUrlHistory>ftp://ecuriesduloup.fr/tomcat/webapps/notifier/|ftp://192.168.0.13/krack/software/apache-tomcat-7.0.4/webapps/notifier/|ftp://192.168.0.13/krack/software/apache-tomcat-7.0.4/webapps/|C:\Users\Public\|ftp://ecuriesduloup.fr/tomcat/webapps/beta_notifier/</PublishUrlHistory>
+    <InstallUrlHistory>http://www.ecuriesduloup.fr/notifier/|http://192.168.0.13/notifier/|\\localhost\Public\|http://www.ecuriesduloup.fr/beta_notifier/</InstallUrlHistory>
     <SupportUrlHistory />
     <UpdateUrlHistory />
     <BootstrapperUrlHistory />

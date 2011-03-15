@@ -57,12 +57,30 @@ namespace EcuriesDuLoupWin.Album
            }
        }
 
-        private byte[] GetBytesOfFiles(string pathOfFile){
+       public bool AddVideo(long albumId, System.IO.FileInfo picture)
+       {
+           log.Info("AlbumManagerWebService.AddVideo : " + picture.FullName + " in album " + albumId);
 
-         Stream file = File.OpenRead(pathOfFile);
-            byte[] fileInByte= new byte[file.Length];
-            file.Read(fileInByte, 0, Convert.ToInt32(file.Length));
-            file.Close();
+           string url = this.UrlRootWS + "/albumPhoto/video/" + albumId;
+           try
+           {
+               string retour = this.wsRestAuthentified.HttpUploadFile(url, picture.FullName, "file", "image", new NameValueCollection());
+               string code = retour.Split(new String[] { "<status>", "</status>" }, StringSplitOptions.None)[1];
+               return code.Equals("OK");
+           }
+           catch
+           {
+               return false;
+           }
+       }
+
+        private byte[] GetBytesOfFiles(string pathOfFile){
+            byte[] fileInByte = null;
+            using (Stream file = File.OpenRead(pathOfFile))
+            {
+               fileInByte = new byte[file.Length];
+                file.Read(fileInByte, 0, Convert.ToInt32(file.Length));
+            }
             return fileInByte;
          }
 
@@ -72,12 +90,14 @@ namespace EcuriesDuLoupWin.Album
         {
             try
             {
-                WebClient client = new WebClient();
-                ICredentials identifiant = new NetworkCredential(this.Authentification.Pseudo, this.Authentification.Password);
-                client.Credentials = identifiant;
-                string url = this.UrlRootWS + "/albumPhoto/albums";
-                string serveurResponse = client.DownloadString(url);
-                return this.ExtractListAlbums(serveurResponse);
+                using (WebClient client = new WebClient())
+                {
+                    ICredentials identifiant = new NetworkCredential(this.Authentification.Pseudo, this.Authentification.Password);
+                    client.Credentials = identifiant;
+                    string url = this.UrlRootWS + "/albumPhoto/albums";
+                    string serveurResponse = client.DownloadString(url);
+                    return this.ExtractListAlbums(serveurResponse);
+                }
             }
             catch (Exception e)
             {

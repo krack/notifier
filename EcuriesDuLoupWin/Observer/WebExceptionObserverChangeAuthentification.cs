@@ -16,13 +16,15 @@ namespace EcuriesDuLoupWin.Observer
         public void NotifieUnauthorizedException()
         {
             AuthentificationDataManager authMangaer = AuthentificationDataManager.Instance;
-            FormAuthentification authForm = new FormAuthentification();
-            authForm.AuthentificationDataManager = authMangaer;
-            authForm.Show();
-
-            while (!authForm.IsEnd)
+            using (FormAuthentification authForm = new FormAuthentification())
             {
-                Application.DoEvents();
+                authForm.AuthentificationDataManager = authMangaer;
+                authForm.Show();
+
+                while (!authForm.IsEnd)
+                {
+                    Application.DoEvents();
+                }
             }
         }
     }

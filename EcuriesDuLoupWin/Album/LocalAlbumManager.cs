@@ -57,6 +57,10 @@ namespace EcuriesDuLoupWin.Album
                 {
                     this.CopyPicture(picture, dirTarget);
                 }
+                else if (Util.IsValidVideo(picture))
+                {
+                    this.CopyPicture(picture, dirTarget);
+                }
             }
         }
 

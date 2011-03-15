@@ -8,6 +8,7 @@ using EcuriesDuLoupWin.right;
 using System.Security;
 using System.Windows.Forms;
 using EcuriesDuLoupWin.utils;
+using EcuriesDuLoupWin.Converter;
 
 namespace EcuriesDuLoupWin.Album
 {
@@ -82,6 +83,20 @@ namespace EcuriesDuLoupWin.Album
                 {
                     this.SendPicture(albumId, file);
                 }
+                else if (Util.IsValidVideo(file))
+                {
+
+                    if (!file.NameWitoutExtention().EndsWith("_out"))
+                    {
+                        FileInfo convertedFile = this.ConvertVideo(file);
+                        if (!file.FullName.Equals(convertedFile.FullName))
+                        {
+                            file.Delete();
+                            convertedFile.MoveTo(file.FullNameWitoutExtention() + ".ogv");
+                        }
+                        this.SendVideo(albumId, convertedFile);
+                    }
+                }
                 else
                 {
                     file.Delete();
@@ -110,9 +125,53 @@ namespace EcuriesDuLoupWin.Album
                         {
                              Thread.Sleep(500);
                              MessageBox.Show("Excption Album Service : " + e.Message);
+                        }                        
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        private FileInfo ConvertVideo(FileInfo video)
+        {
+            if (!video.Extension.ToLower().Equals(".ogv"))
+            {
+                EcuriesDuLoupWin.Converter.Convert convert = new ConvertFFmpeg2Theora();
+                String convertedFile = convert.ConvertToTheora(video.FullName);
+
+                FileInfo file = new FileInfo(convertedFile );
+                return file;
+            }
+            else
+            {
+                return video;
+            }
+        }
+
+        private void SendVideo(long albumId, FileInfo video)
+        {
+            try
+            {
+                if (this.albumManager.AddVideo(albumId, video))
+                {
+                    while (video.Exists)
+                    {
+
+                        video.Refresh();
+                        try
+                        {
+                            video.Delete();
                         }
-                       
-                        
+                        catch (Exception e)
+                        {
+                            Thread.Sleep(500);
+                            MessageBox.Show("Excption Album Service : " + e.Message);
+                        }
+
+
                     }
                 }
             }

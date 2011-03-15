@@ -5,6 +5,7 @@ using System.Text;
 
 namespace EcuriesDuLoupWin.Album
 {
+    [Serializable]
     public class NoGetAlbumException : Exception
     {
         public NoGetAlbumException()

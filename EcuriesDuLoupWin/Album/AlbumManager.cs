@@ -11,6 +11,7 @@ namespace EcuriesDuLoupWin.Album
         long CreateAlbum(String name);
 
         bool AddPicture(long albumId, FileInfo picture);
+        bool AddVideo(long albumId, FileInfo picture);
 
         IList<Album> GetListAlbum();
     }

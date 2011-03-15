@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Diagnostics;
 using System.Net;
+using System.IO;
 
 namespace EcuriesDuLoupWin
 {
@@ -14,14 +15,18 @@ namespace EcuriesDuLoupWin
             Process.Start(url);
         }
 
-        public static void Download(String url, String path)
+        public static void UpdateDownloadFile(String url, String path)
         {
-            WebClient webClient = new WebClient();
+            FileInfo file = new FileInfo(path);
+             if (!file.Exists)
+             {
+                 using (WebClient webClient = new WebClient())
+                 {
 
-            webClient.DownloadFile(url, path);
+                     webClient.DownloadFile(url, path);
 
-            webClient.Dispose();
-
+                 }
+             }
         }
     }
 }

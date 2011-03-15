@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly manifestVersion="1.0" xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1">
-  <asmv1:assemblyIdentity version="2.0.1.3" name="EcuriesDuLoupWin.exe" publicKeyToken="0000000000000000" language="fr-FR" processorArchitecture="x86" type="win32" />
+  <asmv1:assemblyIdentity version="2.0.1.4" name="EcuriesDuLoupWin.exe" publicKeyToken="0000000000000000" language="fr-FR" processorArchitecture="x86" type="win32" />
   <application />
   <entryPoint>
     <assemblyIdentity name="EcuriesDuLoupWin" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
@@ -59,14 +59,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EcuriesDuLoupWin.exe" size="129024">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EcuriesDuLoupWin.exe" size="130560">
       <assemblyIdentity name="EcuriesDuLoupWin" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>LSLyo5x1Meo6+82tf4eymonGsoI=</dsig:DigestValue>
+        <dsig:DigestValue>ZyQaxl9IHx6T5dcqzUn4TBUBElM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -83,6 +83,18 @@
     </dependentAssembly>
   </dependency>
   <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="RegistryManager.exe" size="7680">
+      <assemblyIdentity name="RegistryManager" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>8JbmOQpKMfR0nlfyPX5nc38FUR4=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Utils.dll" size="7680">
       <assemblyIdentity name="Utils" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
@@ -90,17 +102,17 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>WbqUghn97uEau/CdtdQ6iYPHP38=</dsig:DigestValue>
+        <dsig:DigestValue>Kyc+IoJIfJ0pGuUSm/AyWUXV0dE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="EcuriesDuLoupWin.exe.config" size="1707">
+  <file name="EcuriesDuLoupWin.exe.config" size="539">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>SO29SdNv+A2twR0T+VQi7DGVkbg=</dsig:DigestValue>
+      <dsig:DigestValue>6eYRjQeW6E6ZUx/52PYuCdhtTus=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Resources\add.ico" size="9062">

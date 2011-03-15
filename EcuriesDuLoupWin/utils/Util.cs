@@ -23,5 +23,42 @@ namespace EcuriesDuLoupWin.utils
             }
             return true;
         }
+
+
+        public static bool IsValidVideo(FileInfo file)
+        {
+
+            if (
+                    file.Extension.ToLower().Equals(".ogv")
+                ||
+                    file.Extension.ToLower().Equals(".mp4")
+                ||
+                    file.Extension.ToLower().Equals(".avi")
+                 ||
+                    file.Extension.ToLower().Equals(".mov")
+                 ||
+                    file.Extension.ToLower().Equals(".mpg")
+                 ||
+                    file.Extension.ToLower().Equals(".mpa")
+                 ||
+                    file.Extension.ToLower().Equals(".asf")
+                 ||
+                    file.Extension.ToLower().Equals(".wma")
+                 ||
+                    file.Extension.ToLower().Equals(".mp2")
+                 ||
+                    file.Extension.ToLower().Equals(".m2p")
+                 ||
+                    file.Extension.ToLower().Equals(".flv")         
+                )
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        
     }
 }

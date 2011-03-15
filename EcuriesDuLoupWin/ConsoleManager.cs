@@ -62,34 +62,37 @@ namespace EcuriesDuLoupWin
             }else if(args.Length == 4){
                 Factory factory = new Factory();
                 factory.ConsoleInit();
-                DirectoryChoise directoryChoise = new DirectoryChoise();
-                directoryChoise.AlbumManager = factory.AlbumManager;
-                Album.Album value = null;
-                bool ok = false;
-                do{
-
-                    directoryChoise.InitAlbum();
-                    DialogResult res = directoryChoise.ShowDialog();
-                    if (res == DialogResult.OK)
-                    {
-                        ok = true;
-                        value = directoryChoise.GetValueOfSelectedAlbum();
-                    }
-                    else
-                    {
-                        ok = false;
-                    }
-                } while (ok && value == null);
-                
-                if (ok)
+                using (DirectoryChoise directoryChoise = new DirectoryChoise())
                 {
-                    if (args[2].Equals("-d"))
+                    directoryChoise.AlbumManager = factory.AlbumManager;
+                    Album.Album value = null;
+                    bool ok = false;
+                    do
                     {
-                        albumManager.AppendDirectory(args[3], value.Id);
-                    }
-                    else if (args[2].Equals("-f"))
+
+                        directoryChoise.InitAlbum();
+                        DialogResult res = directoryChoise.ShowDialog();
+                        if (res == DialogResult.OK)
+                        {
+                            ok = true;
+                            value = directoryChoise.GetValueOfSelectedAlbum();
+                        }
+                        else
+                        {
+                            ok = false;
+                        }
+                    } while (ok && value == null);
+
+                    if (ok)
                     {
-                        albumManager.AppendFile(args[3], value.Id);
+                        if (args[2].Equals("-d"))
+                        {
+                            albumManager.AppendDirectory(args[3], value.Id);
+                        }
+                        else if (args[2].Equals("-f"))
+                        {
+                            albumManager.AppendFile(args[3], value.Id);
+                        }
                     }
                 }
             }

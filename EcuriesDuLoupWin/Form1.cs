@@ -20,6 +20,7 @@ using EcuriesDuLoupWin.ws;
 using EcuriesDuLoupWin.utils.menu;
 using System.IO;
 using Utils;
+using EcuriesDuLoupWin.Converter;
 
 namespace TestNotificationForm
 {
@@ -91,16 +92,23 @@ namespace TestNotificationForm
         {
              RegisteryMethod.addApplicationOnComputerStart();
              this.DowloadRegistryManager();
+             this.DowloadFFMpeg2Theora();
         }
 
         private void DowloadRegistryManager()
         {
             String exeRegistryManager = RegistryExeCommand.RegistyProgramPath;
-            FileInfo file = new FileInfo(exeRegistryManager);
-            if (!file.Exists)
-            {
-                WebUtils.Download("http://www.ecuriesduloup.fr/registryManager/RegistryManager.exe", exeRegistryManager);
-            }
+           
+            WebUtils.UpdateDownloadFile("http://www.ecuriesduloup.fr/registryManager/RegistryManager.exe", exeRegistryManager);
+            
+        }
+
+        private void DowloadFFMpeg2Theora()
+        {
+            String pathToffMpeg2Theora = ConvertFFmpeg2Theora.ExePath;
+
+            WebUtils.UpdateDownloadFile("http://www.ecuriesduloup.fr/notifier/ffmpeg2theora.exe", pathToffMpeg2Theora);
+
         }
 
         private CheckerAndNotifier createForumNotifier()
@@ -147,7 +155,6 @@ namespace TestNotificationForm
             //this.rightUpdater.Stop();
 
             this.Dispose();
-            this.Close();
             Application.Exit();
 
         }
@@ -178,13 +185,15 @@ namespace TestNotificationForm
              }
 
 
-             FormAuthentification authForm = new FormAuthentification();
-             authForm.AuthentificationDataManager = this.authentificationDataManager;
-             authForm.Show();
-
-             while (!authForm.IsEnd)
+             using (FormAuthentification authForm = new FormAuthentification())
              {
-                 Application.DoEvents();
+                 authForm.AuthentificationDataManager = this.authentificationDataManager;
+                 authForm.Show();
+
+                 while (!authForm.IsEnd)
+                 {
+                     Application.DoEvents();
+                 }
              }
          }
 
