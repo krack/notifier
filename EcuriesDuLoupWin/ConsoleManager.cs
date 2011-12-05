@@ -61,7 +61,6 @@ namespace EcuriesDuLoupWin
                 }
             }else if(args.Length == 4){
                 Factory factory = new Factory();
-                factory.ConsoleInit();
                 using (DirectoryChoise directoryChoise = new DirectoryChoise())
                 {
                     directoryChoise.AlbumManager = factory.AlbumManager;

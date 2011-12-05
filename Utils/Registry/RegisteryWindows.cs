@@ -43,7 +43,10 @@ namespace Utils
             RegistryKey rkcu = Registry.ClassesRoot;
 
             RegistryKey registeryKey = rkcu.CreateSubKey(this.KeyDirectory);
-            registeryKey.SetValue(this.Key, this.Value);
+            if ((this.Key != null) && (this.Value != null))
+            {
+                registeryKey.SetValue(this.Key, this.Value);
+            }
                
             registeryKey.Close();
         }

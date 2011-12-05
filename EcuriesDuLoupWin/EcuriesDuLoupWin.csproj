@@ -32,8 +32,8 @@
     <SuiteName>Ecurie du loup</SuiteName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>2.5.0.%2a</ApplicationVersion>
+    <ApplicationRevision>5</ApplicationRevision>
+    <ApplicationVersion>2.5.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -71,7 +71,7 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup>
@@ -83,6 +83,7 @@
     <StartupObject>
     </StartupObject>
   </PropertyGroup>
+  <PropertyGroup />
   <PropertyGroup />
   <PropertyGroup />
   <PropertyGroup />
@@ -101,7 +102,6 @@
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
@@ -123,10 +123,7 @@
     <Compile Include="checker\WebServiceChecker.cs" />
     <Compile Include="ConsoleManager.cs" />
     <Compile Include="Constants.cs" />
-    <Compile Include="Converter\Convert.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Converter\ConvertFFmpeg2Theora.cs" />
+    <Compile Include="ContextMenuManagerWithRegisteryManager.cs" />
     <Compile Include="DirectoryChoise.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -135,10 +132,10 @@
     </Compile>
     <Compile Include="Extentions.cs" />
     <Compile Include="Factory.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="gui\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
+    <Compile Include="gui\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="FormAuthentification.cs">
@@ -185,17 +182,7 @@
     <Compile Include="right\RightService.cs" />
     <Compile Include="right\type\AdministratorPhoto.cs" />
     <Compile Include="SerialiserManager.cs" />
-    <Compile Include="Settings.cs" />
-    <Compile Include="utils\menu\ContextMenu.cs" />
-    <Compile Include="utils\menu\ContextMenuManager.cs" />
-    <Compile Include="utils\menu\ContextMenuManagerWin7.cs" />
-    <Compile Include="utils\menu\ContextMenuUpdater.cs" />
-    <Compile Include="utils\menu\ContextMenuManagerWinXp.cs" />
-    <Compile Include="utils\menu\VideoContextMenu.cs" />
-    <Compile Include="utils\menu\Icons.cs" />
-    <Compile Include="utils\menu\ImageContextMenu.cs" />
-    <Compile Include="utils\menu\FolderContextMenu.cs" />
-    <Compile Include="utils\menu\SubMenuContextMenu.cs" />
+    <Compile Include="Controleur.cs" />
     <Compile Include="utils\RegisteryMethod.cs" />
     <Compile Include="utils\Util.cs" />
     <Compile Include="WebUtils.cs" />
@@ -203,7 +190,7 @@
     <EmbeddedResource Include="DirectoryChoise.resx">
       <DependentUpon>DirectoryChoise.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
+    <EmbeddedResource Include="gui\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormAuthentification.resx">
@@ -229,9 +216,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="EcuriesDuLoupWin_TemporaryKey.pfx" />
-    <None Include="Properties\app.manifest">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -278,10 +263,6 @@
     <None Include="Resources\loup.wav" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ClickOnceUtils\ClickOnceUtils.csproj">
-      <Project>{37B6919E-F1D9-4538-9A91-B469192F02F0}</Project>
-      <Name>ClickOnceUtils</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Utils\Utils.csproj">
       <Project>{3C01B624-210D-41A8-9F41-04F21A2D272C}</Project>
       <Name>Utils</Name>

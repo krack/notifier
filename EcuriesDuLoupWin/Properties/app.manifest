@@ -20,7 +20,7 @@
       </requestedPrivileges>
       <applicationRequestMinimum>
         <defaultAssemblyRequest permissionSetReference="Custom" />
-        <PermissionSet class="System.Security.PermissionSet" version="1" ID="Custom" SameSite="site" Unrestricted="true" />
+        <PermissionSet class="System.Security.PermissionSet" version="1" Unrestricted="true" ID="Custom" SameSite="site" />
       </applicationRequestMinimum>
     </security>
   </trustInfo>
@@ -44,22 +44,4 @@
         />
     </dependentAssembly>
   </dependency>-->
-
-  <vstav3:addIn
-  xmlns:vstav3="urn:schemas-microsoft-com:vsta.v3">
-    <vstav3:postActions>
-      <vstav3:postAction>
-        <vstav3:entryPoint
-          class="ClickOnceUtils.OnInstall">
-          <assemblyIdentity
-            name="ClickOnceUtils"
-            version="1.0.0.0"
-            language="neutral"
-            processorArchitecture="msil" />
-        </vstav3:entryPoint>
-        <vstav3:postActionData>
-        </vstav3:postActionData>
-      </vstav3:postAction>
-    </vstav3:postActions>
-  </vstav3:addIn>
 </asmv1:assembly>

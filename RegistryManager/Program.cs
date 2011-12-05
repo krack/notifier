@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Utils;
+using EcuriesDuLoupWin.utils.menu;
 
 namespace RegistryManager
 {
@@ -19,9 +20,9 @@ namespace RegistryManager
                 }
                 Console.WriteLine("======");
                 String action = args[0];
-                String directory = args[1];
                 if (action.Equals("-add"))
                 {
+                    String directory = args[1];
                     String key = args[2];
                     String value = args[3];
                     
@@ -29,7 +30,22 @@ namespace RegistryManager
                 }
                 else if (action.Equals("-remove"))
                 {
+                    String directory = args[1];
                     Program.Remove(directory);
+                }
+                else if (action.Equals("-addimages"))
+                {
+                    String pathOfApplcation = args[1];
+                    ContextMenuManagerWin7 contextualMenu = new ContextMenuManagerWin7(pathOfApplcation);
+                    contextualMenu.RemoveEcurieDuLoupInContextualsMenu();
+                    contextualMenu.AddEcurieDuLoupInContextualsMenu();
+                }
+                else if (action.Equals("-removeimages"))
+                {
+
+                    String pathOfApplcation = args[1];
+                    ContextMenuManagerWin7 contextualMenu = new ContextMenuManagerWin7(pathOfApplcation);
+                    contextualMenu.RemoveEcurieDuLoupInContextualsMenu();
                 }
                 else
                 {
@@ -40,7 +56,6 @@ namespace RegistryManager
             {
                 Console.WriteLine(e.Message);
             }
-            Console.Read();
         }
         private static void Add(String directory, String key, String value)
         {

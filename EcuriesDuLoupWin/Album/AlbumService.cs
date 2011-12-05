@@ -8,7 +8,6 @@ using EcuriesDuLoupWin.right;
 using System.Security;
 using System.Windows.Forms;
 using EcuriesDuLoupWin.utils;
-using EcuriesDuLoupWin.Converter;
 
 namespace EcuriesDuLoupWin.Album
 {
@@ -85,17 +84,7 @@ namespace EcuriesDuLoupWin.Album
                 }
                 else if (Util.IsValidVideo(file))
                 {
-
-                    if (!file.NameWitoutExtention().EndsWith("_out"))
-                    {
-                        FileInfo convertedFile = this.ConvertVideo(file);
-                        if (!file.FullName.Equals(convertedFile.FullName))
-                        {
-                            file.Delete();
-                            convertedFile.MoveTo(file.FullNameWitoutExtention() + ".ogv");
-                        }
-                        this.SendVideo(albumId, convertedFile);
-                    }
+                    this.SendVideo(albumId, file);
                 }
                 else
                 {
@@ -132,22 +121,6 @@ namespace EcuriesDuLoupWin.Album
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-            }
-        }
-
-        private FileInfo ConvertVideo(FileInfo video)
-        {
-            if (!video.Extension.ToLower().Equals(".ogv"))
-            {
-                EcuriesDuLoupWin.Converter.Convert convert = new ConvertFFmpeg2Theora();
-                String convertedFile = convert.ConvertToTheora(video.FullName);
-
-                FileInfo file = new FileInfo(convertedFile );
-                return file;
-            }
-            else
-            {
-                return video;
             }
         }
 

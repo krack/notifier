@@ -6,6 +6,7 @@ using Microsoft.Win32;
 using EcuriesDuLoupWin.utils;
 using EcuriesDuLoupWin.utils.menu;
 using System.Windows.Forms;
+using System.IO;
 
 namespace EcuriesDuLoupWin.right
 {
@@ -14,17 +15,18 @@ namespace EcuriesDuLoupWin.right
         public RightDao RightDao { get; set; }
         public Authentification Authentification { get; set; }
         public ContextMenuManager ContextMenuManager { get; set; }
-        private bool HasRight { get; set; }
-        private bool FirstCheck { get; set; }
 
 
-        public RightService()
+        public void MajRightForAppliChange()
         {
-            this.FirstCheck = true;
+            //launch maj right (if install change)
+            String rightFilePath = ApplicationPath.GetApplicationFolder() + @"\right";
+            if (!File.Exists(rightFilePath))
+            {
+                this.MajRight();
+                File.Create(rightFilePath);
+            }
         }
-
-      
-
         public void MajRight()
         {
             IList<Right> rights = this.RightDao.GetListRight(this.Authentification);
@@ -36,17 +38,11 @@ namespace EcuriesDuLoupWin.right
             {
                 this.AddPhotoRight();
             }
-
-            this.FirstCheck = false;
         }
 
         private bool MustBeRemovePhotoRight(IList<Right> rights)
         {
             if (rights.Contains(Right.ADMINISTRATOR_PHOTO))
-            {
-                return false;
-            }
-            if (!this.HasRight  && !this.FirstCheck)
             {
                 return false;
             }
@@ -57,7 +53,6 @@ namespace EcuriesDuLoupWin.right
         {
 
             this.ContextMenuManager.RemoveEcurieDuLoupInContextualsMenu();
-            this.HasRight = false;
         }
 
         private bool MustBeAddPhotoRight(IList<Right> rights)
@@ -65,11 +60,7 @@ namespace EcuriesDuLoupWin.right
             if (!rights.Contains(Right.ADMINISTRATOR_PHOTO))
             {
                 return false;
-            }
-            if (this.HasRight)
-            {
-                return false;
-            }
+            }          
             return true;
         }
 
@@ -78,7 +69,6 @@ namespace EcuriesDuLoupWin.right
             try
             {
                 this.ContextMenuManager.AddEcurieDuLoupInContextualsMenu();
-                this.HasRight = true;
             }catch{
 
             }
