@@ -1,5 +1,0 @@
-C:\Users\krack\Documents\Visual Studio 2010\Projects\EcuriesDuLoupWin\Utils\bin\Release\Utils.dll
-C:\Users\krack\Documents\Visual Studio 2010\Projects\EcuriesDuLoupWin\Utils\bin\Release\Utils.pdb
-C:\Users\krack\Documents\Visual Studio 2010\Projects\EcuriesDuLoupWin\Utils\obj\Release\ResolveAssemblyReference.cache
-C:\Users\krack\Documents\Visual Studio 2010\Projects\EcuriesDuLoupWin\Utils\obj\Release\Utils.dll
-C:\Users\krack\Documents\Visual Studio 2010\Projects\EcuriesDuLoupWin\Utils\obj\Release\Utils.pdb
