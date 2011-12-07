@@ -13,10 +13,28 @@ namespace EcuriesDuLoupWin
 {
     public partial class FormAuthentification : Form
     {
+        private static FormAuthentification _instance;
+        public static FormAuthentification Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new FormAuthentification();
+                    return _instance;
+                }
+                else
+                {
+                    return null;
+                }
+               
+            }
+        }
+
         public AuthentificationDataManager AuthentificationDataManager { private get; set; }
         public RightService RightService { private get; set; }
         public bool IsEnd { get; private set; }
-        public FormAuthentification()
+        private FormAuthentification()
         {
             InitializeComponent();
         }
@@ -33,12 +51,14 @@ namespace EcuriesDuLoupWin
             }
             this.IsEnd = true;
             this.Close();
+            _instance = null;
         }
 
         private void buttonCancer_Click(object sender, EventArgs e)
         {
             this.IsEnd = true;
             this.Close();
+            _instance = null;
         }
 
    

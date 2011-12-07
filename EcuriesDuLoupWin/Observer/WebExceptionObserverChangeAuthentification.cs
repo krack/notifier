@@ -17,8 +17,8 @@ namespace EcuriesDuLoupWin.Observer
         public void NotifieUnauthorizedException()
         {
             AuthentificationDataManager authMangaer = AuthentificationDataManager.Instance;
-            using (FormAuthentification authForm = new FormAuthentification())
-            {
+            FormAuthentification authForm = FormAuthentification.Instance;
+            if(authForm != null){
                 authForm.AuthentificationDataManager = authMangaer;
                 authForm.RightService = this.RightService;
                 authForm.Show();
@@ -27,6 +27,8 @@ namespace EcuriesDuLoupWin.Observer
                 {
                     Application.DoEvents();
                 }
+
+                authForm.Dispose();
             }
         }
     }
