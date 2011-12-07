@@ -7,6 +7,7 @@ namespace EcuriesDuLoupWin
         public string UrlToSend { get; set; }
         public Checker Checker { get; set; }
         public OptionsData Options { get; set; }
+        public Notificater Notificater { get; set; }
 
         public void Run()
         {
@@ -16,6 +17,7 @@ namespace EcuriesDuLoupWin
                 notifier.Message = this.Message;
                 notifier.UrlToSend = this.UrlToSend;
                 notifier.IsPlaySound = this.Options.IsNotificationSoundActivate;
+                notifier.Notificater = this.Notificater;
 
                 notifier.Show();
             }

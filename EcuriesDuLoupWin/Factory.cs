@@ -354,6 +354,7 @@ namespace EcuriesDuLoupWin
             checkWSForum.Message = "Nouveau(x) message(s)";
             checkWSForum.Options = this.Options;
             checkWSForum.UrlToSend = ConfigurationManager.AppSettings["forumUrl"];
+            checkWSForum.Notificater = this.Form1;
 
             checkWSForum.Checker = new WebServiceChecker(this.IconStatusManager, NotifierType.Forum);
             checkWSForum.Checker.StatusUrl = this.UrlWebService + "/status/forum";
@@ -370,6 +371,7 @@ namespace EcuriesDuLoupWin
             checkWSPhotos.Message = "Nouvelle(s) photo(s)";
             checkWSPhotos.Options = this.Options;
             checkWSPhotos.UrlToSend = ConfigurationManager.AppSettings["photosUrl"];
+            checkWSPhotos.Notificater = this.Form1;
 
             checkWSPhotos.Checker = new WebServiceChecker(this.IconStatusManager, NotifierType.Picture);
             checkWSPhotos.Checker.StatusUrl = this.UrlWebService + "/status/photos";

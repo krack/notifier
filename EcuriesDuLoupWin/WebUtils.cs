@@ -12,7 +12,13 @@ namespace EcuriesDuLoupWin
     {
         public static void LaunchBroswer(String url)
         {
-            Process.Start(url);
+            try
+            {
+                Process.Start(url);
+            }
+            catch
+            {
+            }
         }
 
         public static void UpdateDownloadFile(String url, String path)
